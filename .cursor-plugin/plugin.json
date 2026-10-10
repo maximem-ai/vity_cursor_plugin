@@ -1,0 +1,45 @@
+{
+  "name": "maximem-vity",
+  "displayName": "Maximem Vity",
+  "version": "1.0.0",
+  "description": "Personal AI memory. Recall what you've told your tools, look up what you know, stage new facts for review, and write in your own voice.",
+  "author": {
+    "name": "Maximem",
+    "email": "support@maximem.ai"
+  },
+  "publisher": "Maximem",
+  "homepage": "https://docs.maximem.ai/vity/mcp",
+  "repository": "https://github.com/maximem-ai/vity_cursor_plugin",
+  "license": "Apache-2.0",
+  "logo": "assets/logo.svg",
+  "keywords": [
+    "maximem",
+    "vity",
+    "memory",
+    "personal memory",
+    "ai memory",
+    "voice",
+    "mcp"
+  ],
+  "category": "integrations",
+  "tags": [
+    "memory",
+    "personalization",
+    "mcp"
+  ],
+  "variables": {
+    "type": "object",
+    "properties": {
+      "VITY_API_KEY": {
+        "type": "string",
+        "title": "Vity API key",
+        "description": "Personal key starting with mx_. Get one at https://app.maximem.ai under Settings → API Keys."
+      }
+    },
+    "required": [
+      "VITY_API_KEY"
+    ]
+  },
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
+}
