@@ -25,7 +25,7 @@ takes a user, account or vault argument, so you never need to pass an identity.
    comes back empty or low-confidence, say you don't have that in their memory rather
    than inventing it.
 3. **`remember` does not save immediately.** It stages a statement for the user to
-   approve in their Vity dashboard. Tell them it is "noted and pending your review",
+   review and approve. Tell them it is "noted and pending your review",
    never "saved" or "remembered".
 4. **Only stage what you were told.** Do not stage inferences, transient chatter, or
    anything the user asked you to keep private.
@@ -66,8 +66,8 @@ this conversation around it:
 
 ## Not supported through this server
 
-Deleting memories and viewing or approving staged facts happen in the Vity dashboard
-at https://app.maximem.ai, not over MCP. If the user asks to delete something, point
+Deleting memories and managing API keys happen in the Vity dashboard at
+https://app.maximem.ai, not over MCP. Approving staged facts is also not done over MCP. If the user asks to delete something, point
 them there.
 
 ## When Vity fails
@@ -78,7 +78,7 @@ write, give the user the text so it is not lost.
 
 | Error says | Tell the user |
 |---|---|
-| Invalid or revoked API key | Generate a fresh key at https://app.maximem.ai (**Settings → API Keys**) and update `VITY_API_KEY` |
+| Invalid or revoked API key | Generate a fresh key at https://app.maximem.ai (**API Keys** in the sidebar) and update `VITY_API_KEY` |
 | Key not permitted for that action | Re-issue the key with the needed scope in the dashboard |
 | Rate limit reached | Wait and retry later; do not loop on the call |
 | Unreachable or temporary error | Vity is down for the moment; answer without memory and say so |
