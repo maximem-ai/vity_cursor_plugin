@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="Maximem Vity" width="96">
+  <img src="assets/logo-square.svg" alt="Maximem Vity" width="96">
 </p>
 
 <h1 align="center">Maximem Vity for Cursor</h1>
@@ -21,9 +21,10 @@
 Maximem Vity gives AI tools a shared, long-term memory of you. This plugin connects
 Cursor to your Vity memory, so the agent can:
 
+- Know who you are: your role, skills, interests, and goals.
 - Recall your preferences, decisions, projects, and relationships before it answers.
 - Understand what you already know about a topic and adjust its explanations.
-- Stage new facts about you for your review.
+- Save new facts about you, or stage them for your review.
 - Draft and rewrite text in your own writing voice.
 
 Any MCP client connected with your key, such as Grok or Claude Code, works with the
@@ -70,14 +71,15 @@ What do you know about me?
 The agent calls `recall_context` and answers from your memory. If it reports that it
 has no information about you, the connection is working and your memory is empty.
 
-To test staging a new fact, enter:
+To test saving a new fact, enter:
 
 ```text
 Remember that I prefer short, bullet-point status updates.
 ```
 
-The agent calls `remember` and confirms that the fact is pending your review. It
-becomes part of your memory only after you approve it.
+The agent calls `remember` and tells you whether the fact was saved or staged for your
+review in the dashboard. Vity processes new facts in the background, so a saved fact
+can take 10 minutes or more to show up in recall.
 
 ## Tools
 
@@ -85,7 +87,8 @@ becomes part of your memory only after you approve it.
 
 | Tool | Description |
 |---|---|
-| `recall_context` | Returns memories relevant to the current request as a ready-to-use context block. |
+| `get_profile_card` | Returns your Profile Card: name, role, location, expertise, skills, interests, goals, and preferences. |
+| `recall_context` | Returns memories relevant to the current request as a ready-to-use context block. If you turned on "confirm before use" in Vity, the agent asks which memories to use. |
 | `search_memories` | Finds specific remembered facts and returns the matching entries. |
 | `get_user_context` | Builds a structured profile of you in relation to a topic, verified against your memories. |
 | `query_knowledge` | Reports what you know about a subject and your level of expertise. |
@@ -96,8 +99,8 @@ becomes part of your memory only after you approve it.
 
 | Tool | Description |
 |---|---|
-| `remember` | Stages a single fact for your review. Nothing is saved to your memory until you approve it. |
-| `capture_conversation` | Sends a conversation to your memory, where Vity extracts the details worth keeping. The skill instructs the agent to ask for your confirmation first. |
+| `remember` | Saves a single fact to your memory, or stages it for your review, depending on your Vity setup. |
+| `capture_conversation` | Sends a conversation to your memory, where Vity drops filler and extracts the details worth keeping. The skill instructs the agent to ask for your confirmation first. |
 | `summarize` | Returns a summary tailored to what you already know. It may also add a brief note to your memory recording that you read the content. |
 
 ### Prompts and resources
@@ -126,6 +129,7 @@ this plugin.
 |---|---|
 | "Invalid or revoked Vity API key" | Generate a new key in the dashboard and update `VITY_API_KEY`. |
 | "Vity rate limit reached for this API key" | Wait before trying again. |
+| "This Vity account is out of credits" | Top up in the dashboard. |
 | "Vity is unreachable" | The service is temporarily unavailable. Try again shortly. |
 
 ## Support
