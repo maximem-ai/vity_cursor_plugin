@@ -76,11 +76,24 @@ this conversation around it:
 - Good: "Prefers async standups over daily calls."
 - Bad: "yes I do", "the thing we discussed".
 
-## Not supported through this server
+## Deleting memories
 
-Deleting memories and managing API keys happen in the Vity dashboard at
-https://app.maximem.ai, not over MCP. If the user asks to delete something, point them
-there.
+Call `forget_memories` only when the user explicitly asks you to delete something, and
+pass a `query` that describes the specific memories (for example "my old home address").
+Never call it on your own initiative or to tidy up.
+
+The tool deletes nothing by itself. It files a deletion request listing the matching
+memories, and the user approves or rejects it in the Vity dashboard. A request that is
+neither approved nor rejected expires after 7 days. Approved memories go to Recently
+deleted, where they can be restored for 30 days.
+
+After the call, tell the user how many memories you asked to delete and where to approve
+them, using the link the tool returns. Do not file the same request twice. If no memories
+match, say so.
+
+Deleting everything at once and managing API keys are dashboard-only, at
+https://app.maximem.ai. If the tool is not available, the server has deletion turned off:
+point the user to the dashboard.
 
 ## When Vity fails
 

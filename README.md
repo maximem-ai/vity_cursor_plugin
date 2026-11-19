@@ -102,6 +102,7 @@ can take 10 minutes or more to show up in recall.
 | `remember` | Saves a single fact to your memory, or stages it for your review, depending on your Vity setup. |
 | `capture_conversation` | Sends a conversation to your memory, where Vity drops filler and extracts the details worth keeping. The skill instructs the agent to ask for your confirmation first. |
 | `summarize` | Returns a summary tailored to what you already know. It may also add a brief note to your memory recording that you read the content. |
+| `forget_memories` | Files a request to delete the memories that match a description. Nothing is deleted until you approve the request in the Vity dashboard; unapproved requests expire after 7 days. |
 
 ### Prompts and resources
 
@@ -110,9 +111,12 @@ can take 10 minutes or more to show up in recall.
 
 ### Dashboard-only actions
 
-Deleting memories and managing API keys are available only in the
-[Vity dashboard](https://app.maximem.ai). These actions cannot be performed through
-this plugin.
+These actions are available only in the [Vity dashboard](https://app.maximem.ai):
+
+- Approving or rejecting deletion requests filed by `forget_memories`
+- Deleting all memories at once
+- Restoring deleted memories (they stay in Recently deleted for 30 days)
+- Managing API keys
 
 ## Security and Privacy
 
